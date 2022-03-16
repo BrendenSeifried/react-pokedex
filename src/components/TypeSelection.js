@@ -1,11 +1,11 @@
 import React from 'react';
 
-export default function TypeSelection({ type, setType }) {
+export default function TypeSelection({ types, setType }) {
   return (
     <div>
       <select onChange={(e) => setType(e.target.value)}>
-        {type.map((stuff) => (
-          <option key={type}>{stuff.type}</option>
+        {types.map((stuff) => (
+          <option key={stuff.type}>{stuff.type}</option>
         ))}
       </select>
     </div>

@@ -13,4 +13,5 @@ export async function fetchType() {
 
   const types = await response.json();
   console.log(types);
+  return types;
 }
