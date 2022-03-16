@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 import TypeSelection from '../components/TypeSelection';
-import { fetchPokemon, fetchType } from '../services/pokemon';
+import { fetchByType, fetchPokemon, fetchType } from '../services/pokemon';
 
 export default function Main() {
   const [pokemon, setPokemon] = useState([]);
-  const [type, setType] = useState('');
+  const [selectedType, setSelectedType] = useState('');
   const [types, setTypes] = useState([]);
+
+
   useEffect(() => {
     const grabbinThings = async () => {
       const stuff = await fetchPokemon();
@@ -20,15 +22,20 @@ export default function Main() {
   }, []);
 
   useEffect(() => {
-    console.log(type);
-      
-  }, [type]);
+    const grabType = async () => { 
+        
+      const triana = await fetchByType(selectedType);
+      setSelectedType(triana);
+    };
+
+    grabType();  
+  }, [selectedType]);
 
 
   return (
     <div>
       <div>
-        <TypeSelection types={types} setType={setType}/>
+        <TypeSelection types={types} setTypes={setTypes}/>
       </div>
       <div>
         {pokemon.map((grab) => (
