@@ -12,10 +12,14 @@ export default function Main() {
   }, []);
   return (
     <div>Main
-      {pokemon.map((punk) => (
-        <h3 key={punk.id}> {punk.pokemon}</h3>
+      {pokemon.map((grab) => (
+        <div key={grab.id}> 
+          <h3>{grab.pokemon}</h3>
+          <p>({grab.ability_hidden}) ({grab.speed}) ({grab.attack}) ({grab.defense})</p>
+        </div>
+
       ))}
         
-    </div>
+    </div> 
   );
 }
