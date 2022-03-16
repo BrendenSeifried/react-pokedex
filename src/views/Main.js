@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { fetchPokemon, fetchType } from '../services/Pokemon';
+import { fetchPokemon, fetchType } from '../services/pokemon';
 
 export default function Main() {
   const [pokemon, setPokemon] = useState([]);

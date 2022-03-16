@@ -13,10 +13,4 @@ export async function fetchType() {
 
   const types = await response.json();
   console.log(types);
-  //return types
-  // return types.map((stuff) => (<div key=types>{stuff.stypes}</div>)) ;
-  return (<div>{types.map((stuff) => (
-    stuff.types))}
-  </div>
-  );
 }
