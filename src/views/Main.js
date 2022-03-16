@@ -1,17 +1,23 @@
 import { useEffect, useState } from 'react';
-import { fetchPokemon } from '../services/Pokemon';
+import { fetchPokemon, fetchType } from '../services/Pokemon';
 
 export default function Main() {
-  const [pokemon, setPokemon] = useState();
+  const [pokemon, setPokemon] = useState([]);
+  const [type, getType] = useState([]);
   useEffect(() => {
     const grabbinThings = async () => {
       const stuff = await fetchPokemon();
       setPokemon(stuff);
+
+
+      const stuff2 = await fetchType();
+      getType(stuff2);
     };
+    
     grabbinThings();
   }, []);
   return (
-    <div>Main
+    <div>
       {pokemon.map((grab) => (
         <div key={grab.id}> 
           <h3>{grab.pokemon}</h3>

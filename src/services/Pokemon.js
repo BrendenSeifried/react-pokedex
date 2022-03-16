@@ -7,3 +7,16 @@ export async function fetchPokemon() {
   console.log(stuff.results);
   return stuff.results; 
 }
+
+export async function fetchType() {
+  const response = await fetch('https://pokedex-alchemy.herokuapp.com/api/pokedex/types');
+
+  const types = await response.json();
+  console.log(types);
+  //return types
+  // return types.map((stuff) => (<div key=types>{stuff.stypes}</div>)) ;
+  return (<div>{types.map((stuff) => (
+    stuff.types))}
+  </div>
+  );
+}
