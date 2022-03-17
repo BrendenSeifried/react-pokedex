@@ -1,7 +1,7 @@
 // import React from 'react';
 
 export async function fetchPokemon() {
-  const response = await fetch('https://pokedex-alchemy.herokuapp.com/api/pokedex');
+  const response = await fetch('https://pokedex-alchemy.herokuapp.com/api/pokedex?page-1&perPage=10');
 
   const pokeInfo = await response.json();
   // console.log(stuff.results);

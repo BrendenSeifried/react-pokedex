@@ -1,4 +1,4 @@
-img{
+.all-stats img{
     height: 200px;
 }
 
@@ -11,10 +11,11 @@ img{
     margin: 200px;
 }
 
-main {
-    /* background: url(public/pokeball.png) no-repeat center center fixed; */
-    -webkit-background-size: cover;
+.main-img{
+    background: no-repeat center center fixed;
+    object-fit: fill;
+    /* -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: cover;
+    background-size: cover; */
 }
