@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import TypeSelection from '../components/TypeSelection';
 import { fetchByType, fetchPokemon, fetchType } from '../services/pokemon';
 import Search from '../components/Search';
+import './Main.css';
 
 export default function Main() {
   const [pokemon, setPokemon] = useState([]);
@@ -54,7 +55,8 @@ export default function Main() {
         {pokemon.map((grab) => (
           <div key={grab.id}> 
             <h3>{grab.pokemon}</h3>
-            <p>Hidden ability: ({grab.ability_hidden}) Speed: ({grab.speed}) Attack: ({grab.attack}) Defense: ({grab.defense})</p>
+            <img src={grab.url_image}></img>
+            <p>HP: {grab.hp} Hidden ability: ({grab.ability_hidden}) Speed: ({grab.speed}) Attack: ({grab.attack}) Defense: ({grab.defense})</p>
           </div>
 
         ))}
