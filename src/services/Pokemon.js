@@ -28,7 +28,7 @@ export async function fetchByType(type, search) {
   }
 
   // response.set('type', type);
-  const elementTypes = await fetch(`https://pokedex-alchemy.herokuapp.com/api/pokedex?${response.toString()}`);
+  const elementTypes = await fetch(`https://pokedex-alchemy.herokuapp.com/api/pokedex?page=1&perPage=10${response.toString()}`);
 
   const elementInfo = await elementTypes.json();
   console.log(elementInfo);
