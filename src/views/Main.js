@@ -14,8 +14,10 @@ export default function Main() {
       setPokemon(everyPokemon);
 
 
+      // const pokeTypes = await fetchType();
+      // setTypes(pokeTypes);
       const pokeTypes = await fetchType();
-      setTypes(pokeTypes);
+      setTypes(['all', ...pokeTypes]);
     };
     
     allPokemon();

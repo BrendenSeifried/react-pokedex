@@ -18,8 +18,11 @@ export async function fetchType() {
 
 export async function fetchByType(type) {
   const response = new URLSearchParams();
+  if (type !== 'all') {
+    response.set('type', type);
+  }
+
   response.set('type', type);
-  console.log(type); 
   const elementTypes = await fetch(`https://pokedex-alchemy.herokuapp.com/api/pokedex?${response.toString()}`);
 
   const elementInfo = await elementTypes.json();
