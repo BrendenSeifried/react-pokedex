@@ -1,7 +1,7 @@
 // import React from 'react';
 
 export async function fetchPokemon() {
-  const response = await fetch('https://pokedex-alchemy.herokuapp.com/api/pokedex?page-1&perPage=10');
+  const response = await fetch('https://pokedex-alchemy.herokuapp.com/api/pokedex?page=1&perPage=10');
 
   const pokeInfo = await response.json();
   // console.log(stuff.results);
@@ -27,10 +27,10 @@ export async function fetchByType(type, search) {
     response.set('pokemon', search);
   }
 
-  response.set('type', type);
+  // response.set('type', type);
   const elementTypes = await fetch(`https://pokedex-alchemy.herokuapp.com/api/pokedex?${response.toString()}`);
 
   const elementInfo = await elementTypes.json();
-  // console.log(stuff);
+  console.log(elementInfo);
   return elementInfo.results;
 }

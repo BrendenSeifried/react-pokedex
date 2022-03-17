@@ -3,7 +3,7 @@ import TypeSelection from '../components/TypeSelection';
 import { fetchByType, fetchPokemon, fetchType } from '../services/pokemon';
 import Search from '../components/Search';
 import './Main.css';
-import pokeball from './pokeball.png';
+// import pokeball from './pokeball.png';
 
 export default function Main() {
   const [pokemon, setPokemon] = useState([]);
