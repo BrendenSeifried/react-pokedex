@@ -4,38 +4,40 @@ import { fetchByType, fetchPokemon, fetchType } from '../services/pokemon';
 
 export default function Main() {
   const [pokemon, setPokemon] = useState([]);
-  const [selectedType, setSelectedType] = useState('');
+  const [selectedType, setSelectedType] = useState('bug');
   const [types, setTypes] = useState([]);
 
 
   useEffect(() => {
-    const grabbinThings = async () => {
-      const stuff = await fetchPokemon();
-      setPokemon(stuff);
+    const allPokemon = async () => {
+      const everyPokemon = await fetchPokemon();
+      setPokemon(everyPokemon);
 
 
-      const stuff2 = await fetchType();
-      setTypes(stuff2);
+      const pokeTypes = await fetchType();
+      setTypes(pokeTypes);
     };
     
-    grabbinThings();
+    allPokemon();
   }, []);
 
   useEffect(() => {
-    const grabType = async () => { 
-        
-      const triana = await fetchByType(selectedType);
-      setSelectedType(triana);
+    const userType = async () => { 
+    
+      const matchingPokemon = await fetchByType(selectedType);
+      setPokemon(matchingPokemon);
     };
+    if (selectedType) {
+      userType();
+    }
 
-    grabType();  
   }, [selectedType]);
 
 
   return (
     <div>
       <div>
-        <TypeSelection types={types} setTypes={setTypes}/>
+        <TypeSelection types={types} setSelectedType={setSelectedType}/>
       </div>
       <div>
         {pokemon.map((grab) => (
