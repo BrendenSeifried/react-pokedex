@@ -11,3 +11,10 @@ img{
     margin: 200px;
 }
 
+main {
+    /* background: url(public/pokeball.png) no-repeat center center fixed; */
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
