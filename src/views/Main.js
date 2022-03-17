@@ -43,7 +43,7 @@ export default function Main() {
         {pokemon.map((grab) => (
           <div key={grab.id}> 
             <h3>{grab.pokemon}</h3>
-            <p>({grab.ability_hidden}) ({grab.speed}) ({grab.attack}) ({grab.defense})</p>
+            <p>Hidden ability: ({grab.ability_hidden}) Speed: ({grab.speed}) Attack: ({grab.attack}) Defense: ({grab.defense})</p>
           </div>
 
         ))}
