@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 import TypeSelection from '../components/TypeSelection';
 import { fetchByType, fetchPokemon, fetchType } from '../services/pokemon';
+import Search from '../components/Search';
 
 export default function Main() {
   const [pokemon, setPokemon] = useState([]);
-  const [selectedType, setSelectedType] = useState('bug');
+  const [selectedType, setSelectedType] = useState('All');
   const [types, setTypes] = useState([]);
+  const [search, setSearch] = useState('');
 
 
   useEffect(() => {
@@ -17,7 +19,7 @@ export default function Main() {
       // const pokeTypes = await fetchType();
       // setTypes(pokeTypes);
       const pokeTypes = await fetchType();
-      setTypes(['all', ...pokeTypes]);
+      setTypes(['All', ...pokeTypes]);
     };
     
     allPokemon();
@@ -39,6 +41,7 @@ export default function Main() {
   return (
     <div>
       <div>
+        <Search cue={search} setCue={setSearch}/>
         <TypeSelection types={types} setSelectedType={setSelectedType}/>
       </div>
       <div>
