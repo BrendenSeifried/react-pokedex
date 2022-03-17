@@ -20,7 +20,7 @@ export default function Main() {
 
       setTimeout(() => {
         setLoad(false);
-      }, 5000);
+      }, 750);
     };
     allPokemon();
   }, []);
