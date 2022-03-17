@@ -37,14 +37,20 @@ export default function Main() {
 
   }, [selectedType]);
 
+  const searchPokemon = async () => {
+    const data = await fetchByType(selectedType, search);
+    setPokemon(data);
+  };
+
 
   return (
     <div>
       <div>
-        <Search cue={search} setCue={setSearch}/>
+        
         <TypeSelection types={types} setSelectedType={setSelectedType}/>
       </div>
       <div>
+        <Search cue={search} setCue={setSearch} callback={searchPokemon}/>
         {pokemon.map((grab) => (
           <div key={grab.id}> 
             <h3>{grab.pokemon}</h3>

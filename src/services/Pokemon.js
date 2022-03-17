@@ -16,10 +16,13 @@ export async function fetchType() {
   return allPokemonTypes;
 }
 
-export async function fetchByType(type) {
+export async function fetchByType(type, search) {
   const response = new URLSearchParams();
   if (type !== 'all') {
     response.set('type', type);
+  }
+  if (search) {
+    response.set('pokemon', search);
   }
 
   response.set('type', type);
