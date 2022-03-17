@@ -10,7 +10,7 @@ export default function Main() {
   const [selectedType, setSelectedType] = useState('All');
   const [types, setTypes] = useState([]);
   const [search, setSearch] = useState('');
-
+  const [load, setLoad] = useState(true);
 
   useEffect(() => {
     const allPokemon = async () => {
@@ -22,6 +22,10 @@ export default function Main() {
       // setTypes(pokeTypes);
       const pokeTypes = await fetchType();
       setTypes(['All', ...pokeTypes]);
+
+      setTimeout(() => {
+        setLoad(false);
+      }, 5000);
     };
     
     allPokemon();
@@ -44,6 +48,9 @@ export default function Main() {
     setPokemon(data);
   };
 
+
+
+  if (load) return <div className='loader'>Catching Pokemon!</div>;
 
   return (
     // <div className="main-img" style={{ backgroundImage: `url(${pokeball})` }}>
