@@ -47,11 +47,11 @@ export default function Main() {
   return (
     <div>
       <div>
-        
+        <Search cue={search} setCue={setSearch} callback={searchPokemon}/>
         <TypeSelection types={types} setSelectedType={setSelectedType}/>
       </div>
-      <div>
-        <Search cue={search} setCue={setSearch} callback={searchPokemon}/>
+      <div className='stats'>
+        
         {pokemon.map((grab) => (
           <div key={grab.id}> 
             <h3>{grab.pokemon}</h3>
