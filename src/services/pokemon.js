@@ -14,10 +14,11 @@ export async function fetchType() {
 
 }
 
-export async function fetchByType(type, search, direction) {
+export async function fetchByType(type, search, direction, perPage) {
   const response = new URLSearchParams();
   response.set('sort', 'attack');
   response.set('direction', direction);
+  response.set('perPage', perPage);
 
   // sort=defence&direction=desc
 
@@ -29,7 +30,7 @@ export async function fetchByType(type, search, direction) {
     response.set('pokemon', search);
   }
 
-  const elementTypes = await fetch(`https://pokedex-alchemy.herokuapp.com/api/pokedex?${response.toString()}&perPage=10`);
+  const elementTypes = await fetch(`https://pokedex-alchemy.herokuapp.com/api/pokedex?${response.toString()}`);
   const elementInfo = await elementTypes.json();
   return elementInfo.results;
 }

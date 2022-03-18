@@ -4,6 +4,7 @@ import { fetchByType, fetchPokemon, fetchType } from '../services/pokemon';
 import Search from '../components/Search';
 import './Main.css';
 import Order from '../components/Order';
+import Perpage from '../components/Perpage';
 
 
 export default function Main() {
@@ -13,6 +14,7 @@ export default function Main() {
   const [search, setSearch] = useState('');
   const [load, setLoad] = useState(true);
   const [order, setOrder] = useState('asc');
+  const [perPage, setPerPage] = useState('10');
   
 
   useEffect(() => {
@@ -32,24 +34,29 @@ export default function Main() {
 
   useEffect(() => {
     const userType = async () => { 
-      const matchingPokemon = await fetchByType(selectedType, null, order);
+      const matchingPokemon = await fetchByType(selectedType, null, order, perPage);
       setPokemon(matchingPokemon);
     };
     if (selectedType) {
       userType();
     }
-  }, [selectedType, order]);
+  }, [selectedType, order, perPage]);
 
   const searchPokemon = async () => {
-    const data = await fetchByType(selectedType, search);
+    const data = await fetchByType(selectedType, search, null, perPage);
     setPokemon(data);
   };
+
+  // const numberOfPokemon = async () => {
+  //   const data = await fetchByType;
+  // };
 
   if (load) return <div className='loader'>Catching Pokemon!</div>;
 
   return (
     <div className='all-stats'>
       <div>
+        <Perpage perPage={perPage} setPerPage={setPerPage}/>
         <Order setOrder={setOrder}/>
         <Search cue={search} setCue={setSearch} callback={searchPokemon}/>
         <TypeSelection types={types} setSelectedType={setSelectedType}/>
