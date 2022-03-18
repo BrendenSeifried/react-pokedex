@@ -7,11 +7,9 @@ export async function fetchPokemon() {
 }
 
 export async function fetchType() {
-
   const response = await fetch('https://pokedex-alchemy.herokuapp.com/api/pokedex/types');
   const allPokemonTypes = await response.json();
   return allPokemonTypes.map((item) => item.type);
-
 }
 
 export async function fetchByType(type, search, direction, perPage) {
@@ -19,7 +17,6 @@ export async function fetchByType(type, search, direction, perPage) {
   response.set('sort', 'attack');
   response.set('direction', direction);
   response.set('perPage', perPage);
-
 
   if (type !== 'All') {
     response.set('type', type);

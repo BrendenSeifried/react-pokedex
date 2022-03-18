@@ -49,12 +49,6 @@ export default function Main() {
   };
 
  
-
-  // const numberOfPokemon = async () => {
-  //   const data = await fetchByType(null, null, null, perPage);
-  //   setPerPage(data);
-  // };
-
   if (load) return <div className='loader'>Catching Pokemon!</div>;
 
   return (

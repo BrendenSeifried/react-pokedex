@@ -5,7 +5,6 @@ export default function Order({ setOrder }) {
     <div>
       <select onChange={(e) => setOrder(e.target.value)}>
         <option value='asc'>Ascending</option>
-
         <option value='desc'>Descending</option>
       </select>
     </div>
