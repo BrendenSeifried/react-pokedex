@@ -9,7 +9,16 @@
     align-items: center;
     flex-direction: row;
     margin: 200px;
+    border: 4mm ridge rgba(211, 220, 50, .6);
+    background-color: rgba(160, 12, 12, 0.349);
+    width:550px;
+    height:200px;
 }
+
+.stats p {
+    font-weight: bolder;
+}
+
 
 .main-img{
     background: no-repeat center center fixed;

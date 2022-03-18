@@ -49,7 +49,7 @@ export default function Main() {
   };
 
  
-  if (load) return <div className='loader'>Catching Pokemon!</div>;
+  if (load) return <div className='loader'>Loading, please wait.</div>;
 
   return (
     <div className='all-stats'>
@@ -59,9 +59,9 @@ export default function Main() {
         <Search cue={search} setCue={setSearch} callback={searchPokemon}/>
         <TypeSelection types={types} setSelectedType={setSelectedType}/>
       </div>
-      <div className='stats'>
+      <div>
         {pokemon.map((grab) => (
-          <div key={grab.id}> 
+          <div className='stats' key={grab.id}> 
             <h3>{grab.pokemon}</h3>
             <img src={grab.url_image}></img>
             <p>HP: {grab.hp} Hidden ability: ({grab.ability_hidden}) Speed: ({grab.speed}) Attack: ({grab.attack}) Defense: ({grab.defense})</p>
