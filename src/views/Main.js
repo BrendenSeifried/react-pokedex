@@ -15,6 +15,7 @@ export default function Main() {
   const [load, setLoad] = useState(true);
   const [order, setOrder] = useState('asc');
   const [perPage, setPerPage] = useState('10');
+  const [pageClick, setPageClick] = useState('');
   
 
   useEffect(() => {
@@ -34,21 +35,24 @@ export default function Main() {
 
   useEffect(() => {
     const userType = async () => { 
-      const matchingPokemon = await fetchByType(selectedType, null, order, perPage);
+      const matchingPokemon = await fetchByType(selectedType, null, order, pageClick);
       setPokemon(matchingPokemon);
     };
     if (selectedType) {
       userType();
     }
-  }, [selectedType, order, perPage]);
+  }, [selectedType, order, pageClick]);
 
   const searchPokemon = async () => {
-    const data = await fetchByType(selectedType, search, null, perPage);
+    const data = await fetchByType(selectedType, search, null);
     setPokemon(data);
   };
 
+ 
+
   // const numberOfPokemon = async () => {
-  //   const data = await fetchByType;
+  //   const data = await fetchByType(null, null, null, perPage);
+  //   setPerPage(data);
   // };
 
   if (load) return <div className='loader'>Catching Pokemon!</div>;
@@ -56,7 +60,7 @@ export default function Main() {
   return (
     <div className='all-stats'>
       <div>
-        <Perpage perPage={perPage} setPerPage={setPerPage}/>
+        <Perpage perPage={perPage} setPerPage={setPerPage} setPageClick={setPageClick}/>
         <Order setOrder={setOrder}/>
         <Search cue={search} setCue={setSearch} callback={searchPokemon}/>
         <TypeSelection types={types} setSelectedType={setSelectedType}/>

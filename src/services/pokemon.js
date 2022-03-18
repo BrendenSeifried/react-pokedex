@@ -20,8 +20,6 @@ export async function fetchByType(type, search, direction, perPage) {
   response.set('direction', direction);
   response.set('perPage', perPage);
 
-  // sort=defence&direction=desc
-
 
   if (type !== 'All') {
     response.set('type', type);
