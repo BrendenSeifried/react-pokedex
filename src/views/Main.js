@@ -14,8 +14,8 @@ export default function Main() {
   const [search, setSearch] = useState('');
   const [load, setLoad] = useState(true);
   const [order, setOrder] = useState('asc');
-  const [perPage, setPerPage] = useState('10');
-  const [pageClick, setPageClick] = useState('');
+  const [perPage, setPerPage] = useState('');
+  const [pageClick, setPageClick] = useState('10');
   
 
   useEffect(() => {
@@ -31,7 +31,7 @@ export default function Main() {
       }, 5000);
     };
     allPokemon();
-  }, []);
+  }, [perPage]);
 
   useEffect(() => {
     const userType = async () => { 
@@ -59,7 +59,7 @@ export default function Main() {
         <Search cue={search} setCue={setSearch} callback={searchPokemon}/>
         <TypeSelection types={types} setSelectedType={setSelectedType}/>
       </div>
-      <div>
+      <div className='test'>
         {pokemon.map((grab) => (
           <div className='stats' key={grab.id}> 
             <h3>{grab.pokemon}</h3>
