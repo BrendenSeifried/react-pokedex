@@ -3,6 +3,8 @@ import TypeSelection from '../components/TypeSelection';
 import { fetchByType, fetchPokemon, fetchType } from '../services/pokemon';
 import Search from '../components/Search';
 import './Main.css';
+import Order from '../components/Order';
+
 
 export default function Main() {
   const [pokemon, setPokemon] = useState([]);
@@ -10,6 +12,8 @@ export default function Main() {
   const [types, setTypes] = useState([]);
   const [search, setSearch] = useState('');
   const [load, setLoad] = useState(true);
+  const [order, setOrder] = useState('asc');
+  
 
   useEffect(() => {
     const allPokemon = async () => {
@@ -17,6 +21,7 @@ export default function Main() {
       setPokemon(everyPokemon);
       const pokeTypes = await fetchType();
       setTypes(['All', ...pokeTypes]);
+      
 
       setTimeout(() => {
         setLoad(false);
@@ -27,13 +32,13 @@ export default function Main() {
 
   useEffect(() => {
     const userType = async () => { 
-      const matchingPokemon = await fetchByType(selectedType);
+      const matchingPokemon = await fetchByType(selectedType, null, order);
       setPokemon(matchingPokemon);
     };
     if (selectedType) {
       userType();
     }
-  }, [selectedType]);
+  }, [selectedType, order]);
 
   const searchPokemon = async () => {
     const data = await fetchByType(selectedType, search);
@@ -45,6 +50,7 @@ export default function Main() {
   return (
     <div className='all-stats'>
       <div>
+        <Order setOrder={setOrder}/>
         <Search cue={search} setCue={setSearch} callback={searchPokemon}/>
         <TypeSelection types={types} setSelectedType={setSelectedType}/>
       </div>

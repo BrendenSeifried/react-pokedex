@@ -14,8 +14,13 @@ export async function fetchType() {
 
 }
 
-export async function fetchByType(type, search) {
+export async function fetchByType(type, search, direction) {
   const response = new URLSearchParams();
+  response.set('sort', 'attack');
+  response.set('direction', direction);
+
+  // sort=defence&direction=desc
+
 
   if (type !== 'All') {
     response.set('type', type);
