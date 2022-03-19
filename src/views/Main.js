@@ -52,14 +52,17 @@ export default function Main() {
   if (load) return <div className='loader'>Loading, please wait.</div>;
 
   return (
-    <div className='all-stats'>
-      <div>
-        <Perpage perPage={perPage} setPerPage={setPerPage} setPageClick={setPageClick}/>
+    <>
+      <div className='selection'>
         <Order setOrder={setOrder}/>
-        <Search cue={search} setCue={setSearch} callback={searchPokemon}/>
         <TypeSelection types={types} setSelectedType={setSelectedType}/>
       </div>
-      <div className='test'>
+      <div className='inputs'>
+        <Perpage perPage={perPage} setPerPage={setPerPage} setPageClick={setPageClick}/>
+        <Search cue={search} setCue={setSearch} callback={searchPokemon}/>
+        
+      </div>
+      <div className='pokecard'>
         {pokemon.map((grab) => (
           <div className='stats' key={grab.id}> 
             <h3>{grab.pokemon}</h3>
@@ -68,6 +71,6 @@ export default function Main() {
           </div>
         ))}
       </div> 
-    </div>
+    </>
   );
 }

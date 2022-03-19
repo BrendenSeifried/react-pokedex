@@ -1,4 +1,4 @@
-.test{
+.pokecard{
   display:flex;
   justify-content:space-evenly;
   flex-wrap: wrap;
@@ -6,8 +6,15 @@
   flex-direction: row;
 }
 
-.all-stats img{
+.pokecard img{
     height: 200px;
+}
+
+.selection {
+  padding: 50px;
+  background-color: red;
+  color:aliceblue;
+  /* border: 5px rgb(250, 0, 0) solid; */
 }
 
 .stats {
@@ -23,6 +30,20 @@
     height:200px;
 }
 
+ .inputs {
+  /* padding: 10px;  */
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  /* padding: 100px; */
+  border: 3px rgba(0, 0, 0, 0.445) solid;
+  /* margin: 10px; */
+  background-color: rgba(12, 11, 11, 0.774);
+  color: aliceblue;
+
+} 
+
 .stats p {
     font-weight: bolder;
 }
@@ -31,10 +52,6 @@
 .main-img{
     background: no-repeat center center fixed;
     object-fit: fill;
-    /* -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover; */
 }
 .loader{
     display: block;
