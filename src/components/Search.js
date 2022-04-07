@@ -1,10 +1,13 @@
 import React from 'react';
+import { usePokeContex } from '../context/PokeContext';
 import './Component.css';
-export default function Search({ cue, setCue, callback }) {
+
+export default function Search({ callback }) {
+  const { search, setSearch } = usePokeContex();
 
   return (
     <div className='searchcss'>
-      <input value={cue} onChange={(e) => setCue(e.target.value)}/>
+      <input value={search} onChange={(e) => setSearch(e.target.value)}/>
       <button onClick={callback}>Search</button>
     </div>
   );

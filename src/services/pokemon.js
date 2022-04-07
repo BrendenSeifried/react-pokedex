@@ -29,3 +29,5 @@ export async function fetchByType(type, search, direction) {
   const elementInfo = await elementTypes.json();
   return elementInfo.results;
 }
+
+

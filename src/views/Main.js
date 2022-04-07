@@ -54,7 +54,7 @@ export default function Main() {
         <TypeSelection />
       </div>
       <div className='inputs'>
-        <Search cue={search} setCue={setSearch} callback={searchPokemon}/>
+        <Search callback={searchPokemon}/>
         
       </div>
       <div className='pokecard'>
