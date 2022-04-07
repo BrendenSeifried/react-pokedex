@@ -1,6 +1,8 @@
 import React from 'react';
+import { usePokeContex } from '../context/PokeContext';
 
-export default function TypeSelection({ types, setSelectedType }) {
+export default function TypeSelection() {
+  const { types, setSelectedType } = usePokeContex();
   return (
     <div className='typeselectioncss'>
       <select onChange={(e) => setSelectedType(e.target.value)}>

@@ -5,17 +5,19 @@ import Search from '../components/Search';
 import './Main.css';
 import Order from '../components/Order';
 import Perpage from '../components/Perpage';
+import { usePokeContex } from '../context/PokeContext';
 
 
 export default function Main() {
-  const [pokemon, setPokemon] = useState([]);
-  const [selectedType, setSelectedType] = useState('All');
-  const [types, setTypes] = useState([]);
-  const [search, setSearch] = useState('');
+  // const [pokemon, setPokemon] = useState([]);
+  // const [types, setTypes] = useState([]);
+  // const [search, setSearch] = useState('');
   const [load, setLoad] = useState(true);
-  const [order, setOrder] = useState('asc');
+  // const [order, setOrder] = useState('asc');
   const [perPage, setPerPage] = useState('');
   const [pageClick, setPageClick] = useState('10');
+
+  const { selectedType, pokemon, setPokemon, search, setSearch, order, setOrder, types, setTypes } = usePokeContex();
   
 
   useEffect(() => {
@@ -28,10 +30,10 @@ export default function Main() {
 
       setTimeout(() => {
         setLoad(false);
-      }, 5000);
+      }, 1000);  ///switch back to 5 
     };
     allPokemon();
-  }, [perPage]);
+  }, [perPage, setPokemon]);
 
   useEffect(() => {
     const userType = async () => { 
@@ -41,7 +43,7 @@ export default function Main() {
     if (selectedType) {
       userType();
     }
-  }, [selectedType, order, pageClick]);
+  }, [selectedType, order, pageClick, setPokemon]);
 
   const searchPokemon = async () => {
     const data = await fetchByType(selectedType, search, null);
@@ -55,7 +57,7 @@ export default function Main() {
     <>
       <div className='selection'>
         <Order setOrder={setOrder}/>
-        <TypeSelection types={types} setSelectedType={setSelectedType}/>
+        <TypeSelection />
       </div>
       <div className='inputs'>
         <Perpage perPage={perPage} setPerPage={setPerPage} setPageClick={setPageClick}/>
