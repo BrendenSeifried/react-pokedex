@@ -8,11 +8,12 @@ const PokeProvider = ({ children }) => {
   const [search, setSearch] = useState('');
   const [order, setOrder] = useState('asc');
   const [types, setTypes] = useState([]);
+  const [load, setLoad] = useState(true);
 
   
 
   return (
-    <PokeContext.Provider value={{ pokemon, setPokemon, selectedType, setSelectedType, search, setSearch, order, setOrder, types, setTypes }}>{children}</PokeContext.Provider>
+    <PokeContext.Provider value={{ pokemon, setPokemon, selectedType, setSelectedType, search, setSearch, order, setOrder, types, setTypes, load, setLoad }}>{children}</PokeContext.Provider>
   );
     
 };

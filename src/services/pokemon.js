@@ -12,11 +12,11 @@ export async function fetchType() {
   return allPokemonTypes.map((item) => item.type);
 }
 
-export async function fetchByType(type, search, direction, perPage) {
+export async function fetchByType(type, search, direction) {
   const response = new URLSearchParams();
   response.set('sort', 'attack');
   response.set('direction', direction);
-  response.set('perPage', perPage);
+  // response.set('perPage', perPage);
 
   if (type !== 'All') {
     response.set('type', type);
@@ -25,7 +25,7 @@ export async function fetchByType(type, search, direction, perPage) {
     response.set('pokemon', search);
   }
 
-  const elementTypes = await fetch(`https://pokedex-alchemy.herokuapp.com/api/pokedex?${response.toString()}`);
+  const elementTypes = await fetch(`https://pokedex-alchemy.herokuapp.com/api/pokedex?${response.toString()}&perPage=10`);
   const elementInfo = await elementTypes.json();
   return elementInfo.results;
 }

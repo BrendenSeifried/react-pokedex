@@ -1,23 +1,17 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import TypeSelection from '../components/TypeSelection';
 import { fetchByType, fetchPokemon, fetchType } from '../services/pokemon';
 import Search from '../components/Search';
 import './Main.css';
 import Order from '../components/Order';
-import Perpage from '../components/Perpage';
+
 import { usePokeContex } from '../context/PokeContext';
 
 
 export default function Main() {
-  // const [pokemon, setPokemon] = useState([]);
-  // const [types, setTypes] = useState([]);
-  // const [search, setSearch] = useState('');
-  const [load, setLoad] = useState(true);
-  // const [order, setOrder] = useState('asc');
-  const [perPage, setPerPage] = useState('');
-  const [pageClick, setPageClick] = useState('10');
 
-  const { selectedType, pokemon, setPokemon, search, setSearch, order, setOrder, types, setTypes } = usePokeContex();
+
+  const { selectedType, pokemon, setPokemon, search, setSearch, order, setTypes, load, setLoad } = usePokeContex();
   
 
   useEffect(() => {
@@ -30,20 +24,20 @@ export default function Main() {
 
       setTimeout(() => {
         setLoad(false);
-      }, 1000);  ///switch back to 5 
+      }, 5000);  
     };
     allPokemon();
-  }, [perPage, setPokemon]);
+  }, [setPokemon, setTypes, setLoad]);
 
   useEffect(() => {
     const userType = async () => { 
-      const matchingPokemon = await fetchByType(selectedType, null, order, pageClick);
+      const matchingPokemon = await fetchByType(selectedType, null, order);
       setPokemon(matchingPokemon);
     };
     if (selectedType) {
       userType();
     }
-  }, [selectedType, order, pageClick, setPokemon]);
+  }, [selectedType, order, setPokemon]);
 
   const searchPokemon = async () => {
     const data = await fetchByType(selectedType, search, null);
@@ -56,11 +50,10 @@ export default function Main() {
   return (
     <>
       <div className='selection'>
-        <Order setOrder={setOrder}/>
+        <Order />
         <TypeSelection />
       </div>
       <div className='inputs'>
-        <Perpage perPage={perPage} setPerPage={setPerPage} setPageClick={setPageClick}/>
         <Search cue={search} setCue={setSearch} callback={searchPokemon}/>
         
       </div>
