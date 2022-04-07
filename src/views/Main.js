@@ -11,7 +11,7 @@ import { usePokeContex } from '../context/PokeContext';
 export default function Main() {
 
 
-  const { selectedType, pokemon, setPokemon, search, setSearch, order, setTypes, load, setLoad } = usePokeContex();
+  const { selectedType, pokemon, setPokemon, search, order, setTypes, load, setLoad } = usePokeContex();
   
 
   useEffect(() => {
